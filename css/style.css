@@ -31,3 +31,24 @@ body {
 }
 
 /* Page 1 Start  */
+
+.page{
+  background-color: black;
+  height: 100vh;
+}
+.page h1{
+  color: white;
+  font-size: 8vw;
+  font-weight: 300;
+  font-family: PP mori;
+
+  margin-left: 6vw;
+  transform-origin: left;
+}
+.page h2{
+  color: white;
+  font-size: 8vw;
+  font-weight: 300;
+  transform-origin: left;
+  margin-left: 26vw;
+}
