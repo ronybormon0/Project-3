@@ -36,32 +36,96 @@ function init() {
   ScrollTrigger.refresh();
 }
 
+var crsr = document.querySelector(".cursor");
+var main = document.querySelector(".main");
+document.addEventListener("mousemove", function (dets) {
+  crsr.style.left = dets.x + 1 + "px";
+  crsr.style.top = dets.y + 1 + "px";
+});
+
 var tl = gsap.timeline({
-    scrollTrigger: {
-        trigger: ".page1 h1",
-        scroller: ".main",
-        markers:true,
-        start: "top 27%",
-        end: "top 0%",
-        scrub: 3
-    }
+  scrollTrigger: {
+    trigger: ".page1 h1",
+    scroller: ".main",
+    // markers:true,
+    start: "top 27%",
+    end: "top 0%",
+    scrub: 3,
+  },
+});
 
-})
-
-tl.to(".page1 h1", {
-  x: -100,
-  duration: 1,
-
-},"anim");
-
-
-tl.to(".page1 h2", {
-    x: 100,
-},"anim");
-
-tl.to(".page1 video", {
-    width:"90%",
+tl.to(
+  ".page1 h1",
+  {
+    x: -100,
     duration: 1,
-},"anim");
+  },
+  "anim"
+);
 
+tl.to(
+  ".page1 h2",
+  {
+    x: 100,
+  },
+  "anim"
+);
 
+tl.to(
+  ".page1 video",
+  {
+    width: "100%",
+    duration: 1,
+  },
+  "anim"
+);
+
+var tl2 = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".page1 h1",
+    scroller: ".main",
+    // markers: true,
+    start: "top -90%",
+    end: "top -120%",
+    scrub: 3,
+  },
+});
+
+tl2.to(".main", {
+  backgroundColor: "#fff",
+});
+
+var tl3 = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".page1 h1",
+    scroller: ".main",
+    // markers: true,
+    start: "top -200%",
+    end: "top -300%",
+    scrub: 3,
+  },
+});
+
+tl3.to(".main", {
+  backgroundColor: "black",
+});
+
+var boxes = document.querySelectorAll(".box");
+
+boxes.forEach(function (rphoto) {
+  rphoto.addEventListener("mouseenter", function () {
+    var att = rphoto.getAttribute("data-image");
+    crsr.style.width = "450px";
+    crsr.style.height = "320px";
+    crsr.style.borderRadius = "0";
+    crsr.style.backgroundImage = `url(${att})`;
+  });
+  rphoto.addEventListener("mouseleave", function () {
+    crsr.style.width = "20px";
+    crsr.style.height = "20px";
+    crsr.style.borderRadius = "50%";
+    crsr.style.backgroundImage = `none`;
+    rphoto.style.backgroundColor = "transparent";
+  });
+});
+console.log(boxes);
